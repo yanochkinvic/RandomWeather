@@ -109,14 +109,19 @@ if ($btn) {
     if (response.status === 200) {
       const serverData = await response.json()
       const temp = Math.round(serverData.main.temp - 273.15)
+      const feelsLikeTemp = Math.round(serverData.main.feels_like - 273.15)
       const wind = Math.round(serverData.wind.speed)
+      const img = serverData.weather[0].icon
       $resultDiv.innerHTML = 
-        `
-        <p>Город: ${serverData.name}</p>
-        <p>Температура: ${temp}°C</p>
-        <p>Облачность: ${serverData.clouds.all}%</p>
-        <p>Ветер: ${wind} м/с</p>
       `
+      <span>Город:  ${serverData.name}  </span>
+      <img src="https://openweathermap.org/img/w/${img}.png">
+      <p>Температура воздуха:  ${temp}°C</p>
+      <p>По ощущению:  ${feelsLikeTemp}°C</p>
+      <p>Ветер: ${wind} м/с</p>
+      <p>Облачность: ${serverData.clouds.all}%</p>
+      <p>Влажность: ${serverData.main.humidity}%</p>
+    `
     }
     else {
       $resultDiv.innerHTML = 
@@ -134,14 +139,21 @@ if ($weatherForm) {
     const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${data.city}&appid=a1001e2389408a4b3d25aaa7a5bda568`)
     if (response.status === 200) {
       const serverData = await response.json()
+      console.log(serverData)
       const temp = Math.round(serverData.main.temp - 273.15)
+      const feelsLikeTemp = Math.round(serverData.main.feels_like - 273.15)
+      const wind = Math.round(serverData.wind.speed)
+      const img = serverData.weather[0].icon
       $resultDiv.innerHTML = 
-        `
-        <p>Город: ${serverData.name}</p>
-        <p>Температура: ${temp}°C</p>
-        <p>Облачность: ${serverData.clouds.all}%</p>
-        <p>Ветер: ${serverData.wind.speed} м/с</p>
       `
+      <span>Город:  ${serverData.name}  </span>
+      <img src="https://openweathermap.org/img/w/${img}.png">
+      <p>Температура воздуха:  ${temp}°C</p>
+      <p>По ощущению:  ${feelsLikeTemp}°C</p>
+      <p>Ветер: ${wind} м/с</p>
+      <p>Облачность: ${serverData.clouds.all}%</p>
+      <p>Влажность: ${serverData.main.humidity}%</p>
+    `
     }
     else {
       $resultDiv.innerHTML = 
@@ -149,6 +161,7 @@ if ($weatherForm) {
       <p>Упс! Ошибочка вышла</p>
       `
     }
+    $weatherForm.reset()
   })
 }
 

@@ -1,12 +1,22 @@
-<h1> Hello, this is Random Weather!!! </h1>
-<br><br><br>
-<form name="weatherForm">
-  <input name="city" type="text" placeholder="Название города">
-  <button type="submit">Узнать погоду в городе</button>
+<div style="margin-top: 30px; max-width: 100%; display: flex; align-items: center; flex-direction: column">
+<h1 align="center"> Welcome to Random Weather!!! </h1>
+<br>
+<img src="https://cdn.dribbble.com/users/63485/screenshots/2379001/earth_mc.gif" width="200" height="150">
+<br>
+<form name="weatherForm" style="width: 600px">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Узнай погоду в любом городе мира </label>
+    <input name="city" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Например: Moscow">
+  </div>
+  <button type="submit" class="btn btn-outline-secondary">Узнать</button>
 </form>
-<br><br><br>
-<div id="container">
-  <button id="btn">Мне повезет!</button>
+<br>
+<div id="container" style="width: 600px">
+  <div class="d-grid gap-2 col-6 mx-auto">
+  <button id="btn" type="button" class="btn btn-warning btn-lg">Мне повезет!</button>
+  </div>
 </div>
-<div id="result">
+<br>
+<div id="result" style="font-size: 20px; font-weight: bold;">
+</div>
 </div>
